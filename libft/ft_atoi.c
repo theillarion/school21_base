@@ -6,7 +6,7 @@
 /*   By: glashli <glashli@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 14:37:15 by glashli           #+#    #+#             */
-/*   Updated: 2021/10/10 17:54:52 by glashli          ###   ########.fr       */
+/*   Updated: 2021/10/10 17:58:06 by glashli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 static int	ft_get_number(const char	*str, int sign)
 {
-	int	i;
+	int		i;
 	int		number;
 	char	new_str[20];
 	size_t	len;
