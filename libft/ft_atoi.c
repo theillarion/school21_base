@@ -6,7 +6,7 @@
 /*   By: glashli <glashli@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 14:37:15 by glashli           #+#    #+#             */
-/*   Updated: 2021/10/10 17:44:42 by glashli          ###   ########.fr       */
+/*   Updated: 2021/10/10 17:54:52 by glashli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static int	ft_get_number(const char	*str, int sign)
 		i++;
 	len = i;
 	i = -1;
-	while (len == 19 && i++ < 19 && str[i])
+	while (i++ < 19 && len == 19 && str[i])
 		new_str[i] = str[i];
 	new_str[i] = '\0';
 	if (sign == 1
