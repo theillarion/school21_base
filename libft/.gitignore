@@ -1,0 +1,6 @@
+libft
+.vscode
+*.a
+*.so
+*.o
+test

@@ -6,7 +6,7 @@
 /*   By: glashli <glashli@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/07 11:39:06 by illarion          #+#    #+#             */
-/*   Updated: 2021/10/10 16:32:41 by glashli          ###   ########.fr       */
+/*   Updated: 2021/10/10 21:57:31 by glashli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ typedef struct s_list
 }					t_list;
 
 int		ft_strncmp(const char	*str1, const char	*str2, size_t n);
+void	ft_striteri(char	*str, void	(*f)(unsigned int, char *));
 size_t	ft_strlen(const char	*str);
 size_t	ft_strlcpy(char	*dest, const char	*src, size_t size);
 size_t	ft_strlcat(char	*dest, const char	*src, size_t size);
