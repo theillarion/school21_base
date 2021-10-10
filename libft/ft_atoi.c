@@ -6,7 +6,7 @@
 /*   By: glashli <glashli@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 14:37:15 by glashli           #+#    #+#             */
-/*   Updated: 2021/10/10 16:09:25 by glashli          ###   ########.fr       */
+/*   Updated: 2021/10/10 17:44:42 by glashli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@
 
 static int	ft_get_number(const char	*str, int sign)
 {
-	size_t	i;
+	int	i;
 	int		number;
-	char	new_str[21];
+	char	new_str[20];
 	size_t	len;
 
 	number = 0;
@@ -26,14 +26,15 @@ static int	ft_get_number(const char	*str, int sign)
 	while (ft_isdigit(str[i]))
 		i++;
 	len = i;
-	i = 0;
-	while (len == 19 && str[i] && i++ < len)
+	i = -1;
+	while (len == 19 && i++ < 19 && str[i])
 		new_str[i] = str[i];
+	new_str[i] = '\0';
 	if (sign == 1
 		&& (len > 19 || (len == 19 && ft_strncmp(new_str, LONG_MAX, len) >= 0)))
 		return (-1);
 	else if (sign == -1
-		&& (len > 19 || (len > 19 && ft_strncmp(new_str, LONG_MIN, len) >= 0)))
+		&& (len > 19 || (len == 19 && ft_strncmp(new_str, LONG_MIN, len) >= 0)))
 		return (0);
 	i = 0;
 	while (ft_isdigit(str[i]))
