@@ -6,12 +6,12 @@
 /*   By: glashli <glashli@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 14:37:15 by glashli           #+#    #+#             */
-/*   Updated: 2021/10/10 17:58:06 by glashli          ###   ########.fr       */
+/*   Updated: 2021/10/10 22:15:42 by glashli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
-#define	LONG_MAX "9223372036854775807"
+#define LONG_MAX "9223372036854775807"
 #define LONG_MIN "9223372036854775808"
 
 static int	ft_get_number(const char	*str, int sign)
