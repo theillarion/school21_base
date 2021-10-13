@@ -6,7 +6,7 @@
 /*   By: glashli <glashli@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/07 20:08:45 by glashli           #+#    #+#             */
-/*   Updated: 2021/10/10 15:29:55 by glashli          ###   ########.fr       */
+/*   Updated: 2021/10/13 20:57:47 by glashli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,11 +68,13 @@ char	*ft_itoa(int number)
 	sign = 0;
 	if (number < 0)
 		sign = 1;
+	if (number == 0)
+		return (ft_strdup("0"));
 	str = (char *)malloc((ft_get_discharges(number) + sign + 1) * sizeof(char));
 	if (str == NULL)
 		return (NULL);
 	i = 0;
-	while ((i == 0) ^ number)
+	while (number)
 	{
 		str[i++] = ft_abs(number % 10) + '0';
 		number /= 10;
