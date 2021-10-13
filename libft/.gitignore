@@ -4,3 +4,4 @@ libft
 *.so
 *.o
 test
+result.txt
