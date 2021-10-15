@@ -6,35 +6,38 @@
 /*   By: glashli <glashli@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/07 20:08:45 by glashli           #+#    #+#             */
-/*   Updated: 2021/10/13 20:57:47 by glashli          ###   ########.fr       */
+/*   Updated: 2021/10/15 12:55:29 by glashli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+static void	ft_swap(char	*symbol1, char	*symbol2)
+{
+	char	backup;
+
+	backup = *symbol1;
+	*symbol1 = *symbol2;
+	*symbol2 = backup;
+}
+
 static char	*ft_reverse(char	*str)
 {
-	char	*new_str;
-	size_t	length;
 	size_t	i;
+	size_t	j;
 
 	if (str == NULL)
-		length = 0;
+		j = 0;
 	else
-		length = ft_strlen(str);
-	if (length == 0)
-		return (NULL);
-	new_str = (char *)malloc((length + 1) * sizeof(char));
-	if (new_str == NULL)
-		return (NULL);
+		j = ft_strlen(str) - 1;
 	i = 0;
-	while (i < length)
+	while (i < j)
 	{
-		new_str[i] = str[length - 1 - i];
+		ft_swap(&str[i], &str[j]);
 		i++;
+		j--;
 	}
-	new_str[i] = '\0';
-	return (new_str);
+	return (str);
 }
 
 static size_t	ft_get_discharges(int number)

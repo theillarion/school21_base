@@ -6,7 +6,7 @@
 /*   By: glashli <glashli@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/07 23:59:12 by glashli           #+#    #+#             */
-/*   Updated: 2021/10/10 14:44:20 by glashli          ###   ########.fr       */
+/*   Updated: 2021/10/15 12:24:55 by glashli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@ char	*ft_strmapi(const char	*str, char (*f)(unsigned int, char))
 	if (str != NULL)
 		length = ft_strlen(str);
 	i = 0;
-	if (length == 0)
-		return (NULL);
 	new_str = (char *)malloc((length + 1) * sizeof(char));
 	if (new_str == NULL)
 		return (NULL);
