@@ -6,7 +6,7 @@
 /*   By: glashli <glashli@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/09 16:14:07 by glashli           #+#    #+#             */
-/*   Updated: 2021/10/10 14:36:18 by glashli          ###   ########.fr       */
+/*   Updated: 2021/10/20 16:39:13 by glashli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ t_list	*ft_lstmap(t_list	*lst, void	*(*f)(void *), void	(*del)(void *))
 		if (current == NULL)
 		{
 			ft_lstclear(&head, del);
-			ft_lstclear(&lst, del);
 			return (NULL);
 		}
 		ft_lstadd_back(&head, current);
