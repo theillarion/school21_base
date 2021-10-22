@@ -6,7 +6,7 @@
 /*   By: glashli <glashli@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/20 13:55:20 by glashli           #+#    #+#             */
-/*   Updated: 2021/10/20 16:34:20 by glashli          ###   ########.fr       */
+/*   Updated: 2021/10/21 13:02:49 by glashli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ char	*get_next_line(int fd)
 	static char		**backup[OPEN_MAX];
 	char			*current;
 
-	if (fd < 0 || fd > OPEN_MAX || BUFFER_SIZE <= 0)
+	if (fd < 0 || fd >= OPEN_MAX || BUFFER_SIZE <= 0)
 		return (NULL);
 	if (buff[fd] != NULL && buff[fd][0] != NULL && buff[fd][1] == NULL)
 		free(backup[fd]);
@@ -91,7 +91,7 @@ char	*get_next_line(int fd)
 		free(current);
 	}
 	if (buff[fd] != NULL && *(buff)[fd] != NULL)
-		return *(buff)[fd];
+		return (*(buff)[fd]);
 	buff[fd] = NULL;
 	return (NULL);
 }

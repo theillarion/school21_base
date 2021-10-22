@@ -6,7 +6,7 @@
 /*   By: glashli <glashli@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/20 13:55:20 by glashli           #+#    #+#             */
-/*   Updated: 2021/10/20 16:35:00 by glashli          ###   ########.fr       */
+/*   Updated: 2021/10/22 16:12:23 by glashli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,17 +47,17 @@ char	*ft_read_full_file(int fd)
 	char	*current;
 	long	size_read;
 
-	current = (char *)malloc((BUFFER_SIZE + 1) * sizeof(char));
+	current = (char *)malloc((size_t)((BUFFER_SIZE + 1) * sizeof(char)));
 	if (current == NULL)
 		return (NULL);
-	size_read = read(fd, current, BUFFER_SIZE);
+	size_read = read(fd, current, (size_t)BUFFER_SIZE);
 	current[size_read] = '\0';
 	if (size_read <= 0)
 		return (ft_free_and_return(current, NULL));
 	buff = ft_strjoin(NULL, current);
 	while (size_read != 0)
 	{
-		size_read = read(fd, current, BUFFER_SIZE);
+		size_read = read(fd, current, (size_t)BUFFER_SIZE);
 		current[size_read] = '\0';
 		if (size_read <= 0 || current == NULL)
 			return (ft_free_and_return(current, buff));
@@ -76,21 +76,23 @@ char	*get_next_line(int fd)
 
 	if (fd < 0 || fd >= OPEN_MAX || BUFFER_SIZE <= 0)
 		return (NULL);
-	if (buff != NULL && *buff != NULL && *(buff + 1) == NULL)
+	if (buff != NULL && backup != NULL && buff[0] != NULL && buff[1] == NULL)
+	{
 		free(backup);
+		buff = NULL;
+	}
 	if (buff != NULL && *buff != NULL)
 		buff++;
 	if (buff == NULL)
 	{
 		current = ft_read_full_file(fd);
 		if (current == NULL)
-			return (NULL);
+			return (ft_free_and_return(current, NULL));
 		buff = ft_split(current, '\n');
 		backup = buff;
 		free(current);
 	}
 	if (buff != NULL && *buff != NULL)
 		return (*buff);
-	buff = NULL;
 	return (NULL);
 }
