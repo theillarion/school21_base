@@ -6,7 +6,7 @@
 /*   By: glashli <glashli@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/20 14:23:19 by glashli           #+#    #+#             */
-/*   Updated: 2021/10/20 15:50:20 by glashli          ###   ########.fr       */
+/*   Updated: 2021/10/21 13:19:58 by glashli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define GET_NEXT_LINE_BONUS_H
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 42
+#  define BUFFER_SIZE 0
 # endif
 
 # include <stdlib.h>
