@@ -1,24 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printf.c                                           :+:      :+:    :+:   */
+/*   convert_to_base.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: glashli <glashli@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/24 02:10:53 by glashli           #+#    #+#             */
-/*   Updated: 2021/10/24 02:11:06 by glashli          ###   ########.fr       */
+/*   Created: 2021/10/24 02:10:42 by glashli           #+#    #+#             */
+/*   Updated: 2021/10/24 02:12:53 by glashli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-int	ft_printf(const char	*format, ...)
+char	*ft_convert_to_base(long number, char	*base)
 {
-	va_list	argv;
-	int		count;
+	char	result[60];
+	int		sign;
+	int		base_int;
+	size_t	i;
 
-	va_start(argv, format);
-	count = ft_parser(argv, format);
-	va_end(argv);
-	return (count);
+	base_int = ft_strlen(base);
+	sign = 1;
+	if (number < 0)
+		sign = -1;
+	i = 0;
+	while (number != 0)
+	{
+		result[i++] = base[number % base_int];
+		number /= base_int;
+	}
+	if (sign == -1)
+		result[i++] = '-';
+	result[i] = '\0';
+	return (ft_reverse(result));
 }
