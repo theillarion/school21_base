@@ -6,13 +6,13 @@
 /*   By: glashli <glashli@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 02:10:49 by glashli           #+#    #+#             */
-/*   Updated: 2021/10/24 02:18:12 by glashli          ###   ########.fr       */
+/*   Updated: 2021/10/24 02:43:38 by glashli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-int	switch_parser(va_list argv, const char	format)
+int	ft_switch_parser(va_list argv, const char	format)
 {
 	int	count;
 
