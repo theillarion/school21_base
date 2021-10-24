@@ -1,26 +1,34 @@
+NAME		=	libftprintf.a
+HEADER		=	includes/libftprintf.h
 SRCS		=	${wildcard srcs/*.c}
 OBJS		=	${SRCS:.c=.o}
-INCL		=	-I includes
-HEADER		=	libftprintf.h
+INCLUDES	=	-I includes
+MAIN_TEST	=	main_test.c
 CC			=	gcc
 FLAGS		=	-Wall -Werror -Wextra
 LIB			=	ar
 LIB_FLAGS	=	rc
+RANLIB		=	ranlib ${NAME}
 RM			=	rm -rf
-NAME		=	libftprintf.a
 
-.c.o		:	${HEADER}
-			$(CC) ${FLAGS} ${INCL} ${SRCS}
+.c.o		:
+			$(CC) ${FLAGS} ${INCLUDES} -c $< -o ${<:.c=.o}
 
 all			:	${NAME}
 
 ${NAME}		:	${HEADER} ${OBJS}
-			${LIB} ${LIB_FLAGS} ${NAME} $< -o ${<:.c=.o}
+			${LIB} ${LIB_FLAGS} ${NAME} ${OBJS}
+			${RANLIB}
 
-clean		:	${RM} ${OBJS}
+test		:	${HEADER} ${NAME}
+			${CC} ${FLAGS} ${INCLUDES} ${MAIN_TEST} -L. -lftprintf -o ./main_test
 
-fclean		:	clean ${RM}	${NAME}
+clean		:	
+			${RM} ${OBJS}
 
-re			:	fclean ${NAME}
+fclean		:	clean 
+			${RM} ${NAME}
 
-.PHONY		:	all clean fclean re
+re			:	fclean all
+
+.PHONY		:	all clean fclean re test
