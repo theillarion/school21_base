@@ -3,3 +3,4 @@ test
 *.a
 a.out
 main_test
+printfTester
