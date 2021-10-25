@@ -1,5 +1,5 @@
 NAME		=	libftprintf.a
-HEADER		=	includes/libftprintf.h
+HEADER		=	includes/ft_printf.h
 SRCS		=	${wildcard srcs/*.c}
 OBJS		=	${SRCS:.c=.o}
 INCLUDES	=	-I includes
@@ -21,7 +21,7 @@ ${NAME}		:	${HEADER} ${OBJS}
 			${RANLIB}
 
 test		:	${HEADER} ${NAME}
-			${CC} ${FLAGS} ${INCLUDES} ${MAIN_TEST} -L. -lftprintf -o ./main_test
+			@${CC} ${FLAGS} ${INCLUDES} ${MAIN_TEST} -L. -lftprintf -o ./main_test && ./main_test
 
 clean		:	
 			${RM} ${OBJS}
