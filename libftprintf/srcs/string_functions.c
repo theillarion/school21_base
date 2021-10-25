@@ -6,11 +6,11 @@
 /*   By: glashli <glashli@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 02:11:02 by glashli           #+#    #+#             */
-/*   Updated: 2021/10/24 02:11:03 by glashli          ###   ########.fr       */
+/*   Updated: 2021/10/25 16:20:40 by glashli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 size_t	ft_strlen(const char	*str)
 {

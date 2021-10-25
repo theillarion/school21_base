@@ -6,11 +6,11 @@
 /*   By: glashli <glashli@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 02:10:53 by glashli           #+#    #+#             */
-/*   Updated: 2021/10/24 02:11:06 by glashli          ###   ########.fr       */
+/*   Updated: 2021/10/25 16:20:40 by glashli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 int	ft_printf(const char	*format, ...)
 {

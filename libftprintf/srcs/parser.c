@@ -6,11 +6,11 @@
 /*   By: glashli <glashli@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 02:10:49 by glashli           #+#    #+#             */
-/*   Updated: 2021/10/24 03:10:52 by glashli          ###   ########.fr       */
+/*   Updated: 2021/10/25 16:20:40 by glashli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 int	ft_switch_parser(va_list argv, const char	format)
 {
@@ -36,6 +36,7 @@ int	ft_parser(va_list argv, const char	*format)
 	int		count;
 
 	i = 0;
+	count = 0;
 	while (format[i])
 	{
 		if (format[i] == '%' && format[i + 1])
