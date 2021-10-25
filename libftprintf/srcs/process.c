@@ -6,11 +6,11 @@
 /*   By: glashli <glashli@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 02:10:56 by glashli           #+#    #+#             */
-/*   Updated: 2021/10/24 02:12:36 by glashli          ###   ########.fr       */
+/*   Updated: 2021/10/25 18:12:27 by glashli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 int	ft_process_number_hex(const char	format, va_list	argv)
 {
@@ -20,7 +20,7 @@ int	ft_process_number_hex(const char	format, va_list	argv)
 	number = va_arg(argv, unsigned int);
 	if (format == 'x')
 		hex_number = ft_convert_to_base((unsigned int)number, HEX_LOWER);
-	else if (format == 'X')
+	else
 		hex_number = ft_convert_to_base((unsigned int)number, HEX_UPPER);
 	ft_putstr_fd(hex_number, 1);
 	return (ft_strlen(hex_number));
@@ -58,12 +58,23 @@ int	ft_process_number_dec(const char format, va_list argv)
 int	ft_process_address(va_list argv)
 {
 	char	*address;
+	size_t	number;
 	int		count;
 
 	count = write(1, "0x", 2);
-	address = ft_convert_to_base(va_arg(argv, size_t), HEX_LOWER);
+	number = va_arg(argv, size_t);
+	if (number == 0)
+	{
+		write(1, "0", 1);
+		return (++count);
+	}
+	if (number < 0)
+		number *= -1;
+	address = ft_convert_to_base(number, HEX_LOWER);
 	count += ft_strlen(address);
 	ft_putstr_fd(address, 1);
+	if (address != NULL)
+		free(address);
 	return (count);
 }
 
@@ -73,7 +84,15 @@ int	ft_process_string(va_list argv)
 	int		count;
 
 	str = va_arg(argv, char *);
-	count = ft_strlen(str);
-	ft_putstr_fd(str, 1);
+	if (str == NULL)
+	{
+		write(1, "(null)", 6);
+		count = 6;
+	}
+	else
+	{
+		ft_putstr_fd(str, 1);
+		count = ft_strlen(str);
+	}
 	return (count);
 }

@@ -6,31 +6,50 @@
 /*   By: glashli <glashli@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 02:10:42 by glashli           #+#    #+#             */
-/*   Updated: 2021/10/24 02:12:53 by glashli          ###   ########.fr       */
+/*   Updated: 2021/10/25 18:12:42 by glashli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
-char	*ft_convert_to_base(long number, char	*base)
+/*static long ft_abs(long number)
 {
-	char	result[60];
-	int		sign;
+	if (number < 0)
+		return (-number);
+	return (number);
+}*/
+
+static size_t ft_get_discharges_base(size_t number, int base_int)
+{
+	size_t	i;
+
+	i = 0;
+	while (number)
+	{
+		number /= base_int;
+		i++;
+	}
+	return (i);
+}
+
+char	*ft_convert_to_base(size_t number, char	*base)
+{
+	char	*result;
 	int		base_int;
+	size_t	count;
 	size_t	i;
 
 	base_int = ft_strlen(base);
-	sign = 1;
-	if (number < 0)
-		sign = -1;
+	count = ft_get_discharges_base(number, base_int);
+	result = (char *)malloc((count + 1) * sizeof(char));
+	if (result == NULL)
+		return (NULL);
 	i = 0;
 	while (number != 0)
 	{
 		result[i++] = base[number % base_int];
 		number /= base_int;
 	}
-	if (sign == -1)
-		result[i++] = '-';
 	result[i] = '\0';
 	return (ft_reverse(result));
 }
