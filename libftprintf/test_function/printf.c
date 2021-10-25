@@ -41,9 +41,7 @@ static char	*ft_reverse(char	*str)
 		j = ft_strlen(str) - 1;
 	i = 0;
 	while (i < j)
-	{
 		ft_swap_char(&str[i++], &str[j--]);
-	}
 	return (str);
 }
 
@@ -149,25 +147,44 @@ void	ft_putstr_fd(char	*str, int fd)
 	}
 }*/
 
-char	*ft_base_to(long number, char	*base)
+static long ft_abs(long number)
 {
-	char	result[60];
-	int		sign;
+	if (number < 0)
+		return (-number);
+	return (number);
+}
+
+static size_t ft_get_discharges_base(size_t number, int base_int)
+{
+	size_t	i;
+
+	i = 0;
+	while (number)
+	{
+		number /= base_int;
+		i++;
+	}
+	return (i);
+}
+
+char	*ft_convert_to_base(size_t number, char	*base)
+{
+	char	*result;
 	int		base_int;
+	size_t	count;
 	size_t	i;
 
 	base_int = ft_strlen(base);
-	sign = 1;
-	if (number < 0)
-		sign = -1;
+	count = ft_get_discharges_base(number, base_int);
+	result = (char *)malloc((count + 1) * sizeof(char));
+	if (result == NULL)
+		return (NULL);
 	i = 0;
 	while (number != 0)
 	{
 		result[i++] = base[number % base_int];
 		number /= base_int;
 	}
-	if (sign == -1)
-		result[i++] = '-';
 	result[i] = '\0';
 	return (ft_reverse(result));
 }
@@ -289,9 +306,9 @@ int	ft_process_number_hex(const char	format, va_list	argv)
 
 	number = va_arg(argv, unsigned int);
 	if (format == 'x')
-		hex_number = ft_base_to((unsigned int)number, HEX_LOWER);
+		hex_number = ft_convert_to_base((unsigned int)number, HEX_LOWER);
 	else if (format == 'X')
-		hex_number = ft_base_to((unsigned int)number, HEX_UPPER);
+		hex_number = ft_convert_to_base((unsigned int)number, HEX_UPPER);
 	ft_putstr_fd(hex_number, 1);
 	return (ft_strlen(hex_number));
 }
@@ -325,15 +342,26 @@ int ft_process_number_dec(const char format, va_list	argv)
 	return (count);
 }
 
-int ft_process_address(va_list	argv)
+int	ft_process_address(va_list argv)
 {
-	int 	count;
 	char	*address;
+	unsigned long	number;
+	int		count;
 
 	count = write(1, "0x", 2);
-	address = ft_base_to(va_arg(argv, size_t), HEX_LOWER);
+	number = va_arg(argv, unsigned long);
+	if (number == 0)
+	{
+		write(1, "0", 1);
+		return (++count);
+	}
+	if (number < 0)
+		number *= -1;
+	address = ft_convert_to_base(number, HEX_LOWER);
 	count += ft_strlen(address);
 	ft_putstr_fd(address, 1);
+	if (address != NULL)
+		free(address);
 	return (count);
 }
 
@@ -440,12 +468,13 @@ int	ft_printf(const char	*format, ...)
 
 int main()
 {
-	int b = 100;
+	//int b = 100;
 	//int a = ft_printf("Address number(%d): %p\nNumber(%%d): %  d\nNumber(%%i): %i\nNumber(%%u): %u\nSymbol: %%\nString: %s\nSymbol: %c\nNumber(HEX): %x and %X\n\n", b, &b, INT_MAX, INT_MAX, 3147483647, "ddddd", 's', INT_MAX, INT_MAX);
-	int c = printf("Address number(%d): %p\nNumber(%%d): %  d\nNumber(%%i): %i\nNumber(%%u): %lu\nSymbol: %%\nString: %s\nSymbol: %c\nNumber(HEX): %x and %X\n\n", b, &b, INT_MAX, INT_MAX, 3147483647, "ddddd", 's', INT_MAX, INT_MAX);
+	//int c = printf("Address number(%d): %p\nNumber(%%d): %  d\nNumber(%%i): %i\nNumber(%%u): %lu\nSymbol: %%\nString: %s\nSymbol: %c\nNumber(HEX): %x and %X\n\n", b, &b, INT_MAX, INT_MAX, 3147483647, "ddddd", 's', INT_MAX, INT_MAX);
 	
 	//int a = ft_printf("String: %s\nSymbol: %c\n", "ddddd", 's');
 	//int c = printf("String: %s\nSymbol: %c\n", "ddddd", 's');
 	//printf("%d and %d", a, c);
+	ft_printf(" %p", ULONG_MAX);
 	return (0);
 }
