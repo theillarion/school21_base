@@ -6,7 +6,7 @@
 /*   By: glashli <glashli@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 02:10:56 by glashli           #+#    #+#             */
-/*   Updated: 2021/10/25 18:12:27 by glashli          ###   ########.fr       */
+/*   Updated: 2021/10/28 18:53:51 by glashli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,11 @@ int	ft_process_number_dec(const char format, va_list argv)
 			ft_putchar_fd(number, 1);
 		else if (format == 'd' || format == 'i')
 			ft_putlnbr_fd(number, 1);
+		if (number < 0 && format != 'c')
+		{
+			number = -number;
+			count++;
+		}		
 	}
 	else if (format == 'u')
 	{
@@ -47,12 +52,9 @@ int	ft_process_number_dec(const char format, va_list argv)
 		ft_putlnbr_fd((unsigned int)number, 1);
 	}
 	if (format == 'c')
-		count = 1;
+		return (1);
 	else
-		count = ft_get_discharges(number);
-	if (number < 0)
-		count++;
-	return (count);
+		return (count + ft_get_discharges(number));
 }
 
 int	ft_process_address(va_list argv)
@@ -65,11 +67,9 @@ int	ft_process_address(va_list argv)
 	number = va_arg(argv, size_t);
 	if (number == 0)
 	{
-		write(1, "0", 1);
-		return (++count);
+		write(1, "(null)", 6);
+		return (count + 6);
 	}
-	if (number < 0)
-		number *= -1;
 	address = ft_convert_to_base(number, HEX_LOWER);
 	count += ft_strlen(address);
 	ft_putstr_fd(address, 1);
