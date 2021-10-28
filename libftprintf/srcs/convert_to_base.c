@@ -6,18 +6,11 @@
 /*   By: glashli <glashli@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 02:10:42 by glashli           #+#    #+#             */
-/*   Updated: 2021/10/25 18:12:42 by glashli          ###   ########.fr       */
+/*   Updated: 2021/10/28 18:52:06 by glashli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-/*static long ft_abs(long number)
-{
-	if (number < 0)
-		return (-number);
-	return (number);
-}*/
 
 static size_t ft_get_discharges_base(size_t number, int base_int)
 {
