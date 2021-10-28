@@ -6,7 +6,7 @@
 /*   By: glashli <glashli@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 02:10:56 by glashli           #+#    #+#             */
-/*   Updated: 2021/10/28 18:53:51 by glashli          ###   ########.fr       */
+/*   Updated: 2021/10/28 19:15:46 by glashli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int	ft_process_number_hex(const char	format, va_list	argv)
 {
 	char			*hex_number;
 	unsigned int	number;
+	int				size;
 
 	number = va_arg(argv, unsigned int);
 	if (format == 'x')
@@ -23,7 +24,10 @@ int	ft_process_number_hex(const char	format, va_list	argv)
 	else
 		hex_number = ft_convert_to_base((unsigned int)number, HEX_UPPER);
 	ft_putstr_fd(hex_number, 1);
-	return (ft_strlen(hex_number));
+	size = ft_strlen(hex_number);
+	if (hex_number != NULL)
+		free(hex_number);
+	return (size);
 }
 
 int	ft_process_number_dec(const char format, va_list argv)
@@ -63,13 +67,13 @@ int	ft_process_address(va_list argv)
 	size_t	number;
 	int		count;
 
-	count = write(1, "0x", 2);
 	number = va_arg(argv, size_t);
 	if (number == 0)
 	{
-		write(1, "(null)", 6);
-		return (count + 6);
+		write(1, "(nil)", 5);
+		return (5);
 	}
+	count = write(1, "0x", 2);
 	address = ft_convert_to_base(number, HEX_LOWER);
 	count += ft_strlen(address);
 	ft_putstr_fd(address, 1);
