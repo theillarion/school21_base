@@ -41,23 +41,24 @@ int main()
 	/*ft_printf(" %p ", -1); // 1
 	ft_printf(" %p ", 1); // 2
 	ft_printf(" %p ", 15); // 3*/
-	ft_printf(" %p ", 16); // 4
+//	ft_printf(" %p ", 16); // 4
 	/*ft_printf(" %p ", 17); // 5
 	ft_printf(" %p %p ", LONG_MIN, LONG_MAX); // 6*/
 	//ft_printf(" %p %p ", INT_MIN, INT_MAX); // 7
 	//ft_printf(" %p %p ", ULONG_MAX, -ULONG_MAX); // 8
-	//ft_printf(" %p %p ", 0, 0); // 9
-	//ft_printf("\n");
+	int a = ft_printf(" %p %p ", 0, 0); // 9
+	ft_printf("\n");
 
 	/*printf(" %p ", (void *)-1); // 1
 	printf(" %p ", (void *)1); // 2
 	printf(" %p ", (void *)15); // 3*/
-	printf(" %p ", (void *)16); // 4
+//	printf(" %p ", (void *)16); // 4
 /*	printf(" %p ", (void *)17); // 5
 	printf(" %p %p ", (void *)LONG_MIN, (void *)LONG_MAX); // 6*/
 	//printf(" %p %p ", (void *)-2147483648, (void *)INT_MAX); // 7
 	//printf(" %p %p ", (void *)ULONG_MAX, (void *)-ULONG_MAX); // 8
-	//printf(" %p %p ", (void *)0, (void *)0); // 9
+	int b = printf(" %p %p ", (void *)0, (void *)0); // 9
+	printf("\n%d:::%d\n", a, b);
 	//printf("%zu", ULONG_MAX);
 
 	/*int	arr[22];
@@ -142,5 +143,7 @@ int main()
 	int g = printf("\n\n%d", -123);
 	int d = printf("\n\n%d", -123);
 	printf("\n::::::%d:::::::%d", g, d);*/
+
+	//ft_printf("%x", 0);
 	return (0);
 }
