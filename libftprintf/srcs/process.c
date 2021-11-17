@@ -6,7 +6,7 @@
 /*   By: glashli <glashli@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 02:10:56 by glashli           #+#    #+#             */
-/*   Updated: 2021/10/28 19:15:46 by glashli          ###   ########.fr       */
+/*   Updated: 2021/11/17 11:00:39 by glashli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,12 +68,12 @@ int	ft_process_address(va_list argv)
 	int		count;
 
 	number = va_arg(argv, size_t);
+	count = write(1, "0x", 2);
 	if (number == 0)
 	{
-		write(1, "(nil)", 5);
-		return (5);
+		count += write(1, "0", 1);
+		return (count);
 	}
-	count = write(1, "0x", 2);
 	address = ft_convert_to_base(number, HEX_LOWER);
 	count += ft_strlen(address);
 	ft_putstr_fd(address, 1);
