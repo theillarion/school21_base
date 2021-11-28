@@ -6,7 +6,7 @@
 /*   By: glashli <glashli@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/07 20:08:45 by glashli           #+#    #+#             */
-/*   Updated: 2021/10/15 12:55:29 by glashli          ###   ########.fr       */
+/*   Updated: 2021/10/23 16:00:29 by glashli          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,7 @@ static char	*ft_reverse(char	*str)
 	i = 0;
 	while (i < j)
 	{
-		ft_swap(&str[i], &str[j]);
-		i++;
-		j--;
+		ft_swap(&str[i++], &str[j--]);
 	}
 	return (str);
 }
