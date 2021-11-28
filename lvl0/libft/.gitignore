@@ -1,0 +1,7 @@
+libft
+.vscode
+*.a
+*.so
+*.o
+test
+result.txt
