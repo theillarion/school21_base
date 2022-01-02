@@ -18,7 +18,7 @@ void ft_send_data(char	*str)
 		int	j = 128;
 		while (j)
 		{
-			if (j & *str)
+			if (j & str[i])
 				kill(pid, SIGUSR1);
 			else
 				kill(pid, SIGUSR2);
