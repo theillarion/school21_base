@@ -6,5 +6,6 @@
 !*/
 # Ignore all with .o extension
 *.o
-# Ignore all a.out files
+# Ignore files/dirs
 a.out
+trash
