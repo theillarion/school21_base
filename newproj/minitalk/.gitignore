@@ -1,2 +1,10 @@
-*.0
+# Ignore all
+*
+# Unignore all with extensions
+!*.*
+# Unignore all dirs
+!*/
+# Ignore all with .o extension
+*.o
+# Ignore all a.out files
 a.out
