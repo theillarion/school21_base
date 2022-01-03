@@ -71,29 +71,27 @@ int	main(void)
 	struct sigaction	action_one;
 	struct sigaction	action_zero;
 	sigset_t	set;
-	int i = 0;
 
 	printf("PID: %d\n", getpid());
+	
 	memset(&action_one, 0, sizeof(action_one));
-	action_one.sa_handler = one;
-	sigemptyset(&action_zero.sa_mask);
-	sigaction(SIGUSR1, &action_one, NULL);
-
 	memset(&action_zero, 0, sizeof(action_zero));
+	memset(&byte, 0, sizeof(byte));
+
+	action_one.sa_handler = one;
 	action_zero.sa_handler = zero;
+	
+	sigemptyset(&action_one.sa_mask);
 	sigemptyset(&action_zero.sa_mask);
+
+	sigaddset(&set, SIGUSR1);
+	sigaddset(&set, SIGUSR2);
+
+	sigaction(SIGUSR1, &action_one, NULL);
 	sigaction(SIGUSR2, &action_zero, NULL);	
 	
-	memset(&byte, 0, sizeof(byte));
-	while(1)
-	{
-		sigaddset(&set, SIGUSR1);
-		//printf("Hello: ");
-		sigaddset(&set, SIGUSR2);
-		//printf("Hello: ");
-		sigemptyset(&set);
-		//printf("Hello: ");
+	while(1)	
 		pause();
-	}
+
 	exit(EXIT_SUCCESS);
 }
