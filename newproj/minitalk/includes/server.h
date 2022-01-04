@@ -7,6 +7,9 @@
 # include <stdlib.h>
 # include <signal.h>
 
+size_t	ft_strlen(const char	*str);
+void	ft_putchar_fd(char symbol, int fd);
+void	ft_putendl_fd(char	*str, int fd);
 void	ft_one();
 void	ft_zero();
 void	ft_print(char bit);
