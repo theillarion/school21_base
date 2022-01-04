@@ -1,5 +1,4 @@
 #include "server.h"
-#include "libft.h"
 
 void	ft_initial_actions(struct sigaction	*action_one, struct sigaction	*action_zero)
 {

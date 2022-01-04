@@ -1,5 +1,4 @@
 #include "client.h"
-#include "libft.h"
 
 void	ft_send_data(pid_t pid, char	*str)
 {
@@ -14,9 +13,9 @@ void	ft_send_data(pid_t pid, char	*str)
 		while (j)
 		{
 			if (j & str[i])
-				kill(pid, SIGUSR1);
+				kill(pid, SIGUSR1);            // добавить обработчик ошибки
 			else
-				kill(pid, SIGUSR2);
+				kill(pid, SIGUSR2);            // тоже
 			j /= 2;
 		}
 		i++;

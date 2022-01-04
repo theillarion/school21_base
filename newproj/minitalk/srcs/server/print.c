@@ -1,5 +1,4 @@
 #include "server.h"
-#include "libft.h"
 
 void	ft_print(char bit)
 {
