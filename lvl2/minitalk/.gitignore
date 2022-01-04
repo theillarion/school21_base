@@ -4,6 +4,8 @@
 !*.*
 # Unignore all dirs
 !*/
+# Unignore Makefile
+!Makefile
 # Ignore all with .o extension
 *.o
 # Ignore files/dirs
