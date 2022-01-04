@@ -4,38 +4,35 @@ BONUS_SRCS		=	ft_lstadd_back.c ft_lstadd_front.c ft_lstclear.c ft_lstdelone.c ft
 COMMON_OBJS		=	${COMMON_SRCS:.c=.o}
 BONUS_OBJS		=	${BONUS_SRCS:.c=.o}
 INCLUDES		=	-I.
-NAME			=	libft
+NAME			=	libft.a
 COMPILER		=	gcc
 FLAGS_COMP		=	-Wall -Werror -Wextra
 FLAGS_LINUX		=	-shared -fPIC
 LIB				=	ar
 EXT_LIB_MAC		=	.a
 EXT_LIB_LINUX	=	.so
-FLAGS_LIB		=	rc
-RANLIB			=	ranlib
+FLAGS_LIB		=	rcs
 RM				=	rm -rf
 
-.c.o	:	${HEADER}
-		${COMPILER} ${FLAGS_COMP} ${INCLUDES} -c $< -o ${<:.c=.o}
+.c.o	:
+			${COMPILER} ${FLAGS_COMP} ${INCLUDES} -c $< -o ${<:.c=.o}
 
 all		:	${NAME}
 
-${NAME} :	${COMMON_OBJS} ${HEADER}
-		${LIB} ${FLAGS_LIB} ${NAME}${EXT_LIB_MAC} ${COMMON_OBJS}
-		${RUNLIB}
+${NAME} :	${COMMON_OBJS}
+			${LIB} ${FLAGS_LIB} ${NAME} ${COMMON_OBJS}
 
-bonus	:	${COMMON_OBJS} ${BONUS_OBJS} ${HEADER}
-		${LIB} ${FLAGS_LIB} ${NAME}${EXT_LIB_MAC} ${COMMON_OBJS} ${BONUS_OBJS}
-		${RANLIB} ${NAME}${EXT_LIB_MAC}
+bonus	:	${COMMON_OBJS} ${BONUS_OBJS}
+			${LIB} ${FLAGS_LIB} ${NAME} ${COMMON_OBJS} ${BONUS_OBJS}
 #so		:	
 #		${COMPILER} ${FLAGS_LINUX} -o ${NAME}${EXT_LIB_LINUX} ${INCLUDES} ${COMMON_SRCS}
 
 clean	:
-		${RM} ${COMMON_OBJS} ${BONUS_OBJS}
+			${RM} ${COMMON_OBJS} ${BONUS_OBJS}
 	
 fclean	:	clean
-		${RM} ${NAME} ${NAME}${EXT_LIB_MAC} ${NAME}${EXT_LIB_LINUX}
+			${RM} ${NAME} ${NAME}${EXT_LIB_MAC} ${NAME}${EXT_LIB_LINUX}
 
 re		:	fclean ${NAME}
 
-.PHONY	:	all clean fclean re
+.PHONY	:	all clean fclean re bonus
