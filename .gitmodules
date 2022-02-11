@@ -1,3 +1,6 @@
 [submodule "lvl0/libft"]
 	path = lvl0/libft
 	url = git@github.com:theillarion/21-libft.git
+[submodule "lvl2/minitalk"]
+	path = lvl2/minitalk
+	url = git@github.com:theillarion/21-minitalk.git
