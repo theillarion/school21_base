@@ -10,3 +10,6 @@
 	path = lvl2/push_swap
 	url = https://github.com/theillarion/21-push_swap.git
 	branch = main
+[submodule "lvl2/so_long"]
+	path = lvl2/so_long
+	url = https://github.com/theillarion/21-so_long.git
