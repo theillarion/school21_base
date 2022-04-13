@@ -1,9 +1,12 @@
 [submodule "lvl0/libft"]
 	path = lvl0/libft
 	url = https://github.com/theillarion/21-libft.git
+	branch = main
 [submodule "lvl2/minitalk"]
 	path = lvl2/minitalk
 	url = https://github.com/theillarion/21-minitalk.git
+	branch = main
 [submodule "lvl2/push_swap"]
 	path = lvl2/push_swap
 	url = https://github.com/theillarion/21-push_swap.git
+	branch = main
