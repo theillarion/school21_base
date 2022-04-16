@@ -8,15 +8,14 @@
 	branch = main
 [submodule "lvl2/push_swap"]
 	path = lvl2/push_swap
-<<<<<<< HEAD
 	url = git@github.com:theillarion/21-push_swap.git
+	branch = main
 [submodule "lvl1/get_next_line_fixed"]
 	path = lvl1/get_next_line_fixed
 	url = https://github.com/theillarion/get_next_line_fixed.git
-=======
 	url = https://github.com/theillarion/21-push_swap.git
 	branch = main
 [submodule "lvl2/so_long"]
 	path = lvl2/so_long
 	url = https://github.com/theillarion/21-so_long.git
->>>>>>> 19a351f088e2153de01bb0b71113b7e2413f9047
+	branch = master
