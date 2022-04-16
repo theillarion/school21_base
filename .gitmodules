@@ -13,7 +13,7 @@
 [submodule "lvl1/get_next_line_fixed"]
 	path = lvl1/get_next_line_fixed
 	url = https://github.com/theillarion/get_next_line_fixed.git
-	branch = main
+	branch = master
 [submodule "lvl2/so_long"]
 	path = lvl2/so_long
 	url = https://github.com/theillarion/21-so_long.git
