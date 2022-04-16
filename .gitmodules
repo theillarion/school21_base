@@ -7,3 +7,6 @@
 [submodule "lvl2/push_swap"]
 	path = lvl2/push_swap
 	url = git@github.com:theillarion/21-push_swap.git
+[submodule "lvl1/get_next_line_fixed"]
+	path = lvl1/get_next_line_fixed
+	url = https://github.com/theillarion/get_next_line_fixed.git
